@@ -204,6 +204,10 @@ export MACOSX_DEPLOYMENT_TARGET=10.2
 MD5SUM = md5 -r
 endif
 
+ifeq ($(OSNAME), DragonFly)
+MD5SUM = md5 -r
+endif
+
 ifeq ($(OSNAME), FreeBSD)
 MD5SUM = md5 -r
 endif

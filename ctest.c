@@ -48,6 +48,10 @@ COMPILER_GNU
 OS_LINUX
 #endif
 
+#if defined(__DragonFly__)
+OS_DRAGONFLY
+#endif
+
 #if defined(__FreeBSD__) || defined(__FreeBSD_kernel__)
 OS_FREEBSD
 #endif

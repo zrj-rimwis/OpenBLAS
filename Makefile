@@ -88,6 +88,10 @@ ifeq ($(OSNAME), Linux)
 	@-ln -fs $(LIBSONAME) $(LIBPREFIX).so
 	@-ln -fs $(LIBSONAME) $(LIBPREFIX).so.$(MAJOR_VERSION)
 endif
+ifeq ($(OSNAME), DragonFly)
+	@$(MAKE) -C exports so
+	@-ln -fs $(LIBSONAME) $(LIBPREFIX).so
+endif
 ifeq ($(OSNAME), FreeBSD)
 	@$(MAKE) -C exports so
 	@-ln -fs $(LIBSONAME) $(LIBPREFIX).so

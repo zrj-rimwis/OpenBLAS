@@ -89,7 +89,7 @@ extern "C" {
 #include <sched.h>
 #endif
 
-#if defined(OS_DARWIN) || defined(OS_FREEBSD) || defined(OS_NETBSD)
+#if defined(OS_DARWIN) || defined(OS_FREEBSD) || defined(OS_DRAGONFLY) || defined(OS_NETBSD)
 #include <sched.h>
 #endif
 
@@ -490,7 +490,7 @@ typedef char* env_var_t;
 
 #define TOUPPER(a) {if ((a) > 0x60) (a) -= 0x20;}
 
-#if defined(__FreeBSD__) || defined(__APPLE__)
+#if defined(__DragonFly__) || defined(__FreeBSD__) || defined(__APPLE__)
 #define MAP_ANONYMOUS MAP_ANON
 #endif
 

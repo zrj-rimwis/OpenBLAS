@@ -46,6 +46,7 @@ $compiler = DEC       if ($data =~ /COMPILER_DEC/);
 $compiler = GCC       if ($compiler eq "");
 
 $os = Linux           if ($data =~ /OS_LINUX/);
+$os = DragonFly       if ($data =~ /OS_DRAGONFLY/);
 $os = FreeBSD         if ($data =~ /OS_FREEBSD/);
 $os = NetBSD          if ($data =~ /OS_NETBSD/);
 $os = Darwin          if ($data =~ /OS_DARWIN/);

@@ -69,6 +69,11 @@ ifeq ($(OSNAME), Linux)
 	ln -fs $(LIBSONAME) $(LIBPREFIX).so ; \
 	ln -fs $(LIBSONAME) $(LIBPREFIX).so.$(MAJOR_VERSION)
 endif
+ifeq ($(OSNAME), DragonFly)
+	@cp $(LIBSONAME) $(DESTDIR)$(OPENBLAS_LIBRARY_DIR)
+	@cd $(DESTDIR)$(OPENBLAS_LIBRARY_DIR) ; \
+	ln -fs $(LIBSONAME) $(LIBPREFIX).so
+endif
 ifeq ($(OSNAME), FreeBSD)
 	@cp $(LIBSONAME) $(DESTDIR)$(OPENBLAS_LIBRARY_DIR)
 	@cd $(DESTDIR)$(OPENBLAS_LIBRARY_DIR) ; \
@@ -99,7 +104,7 @@ endif
 	@echo "SET(OpenBLAS_INCLUDE_DIRS ${OPENBLAS_INCLUDE_DIR})" >> $(DESTDIR)$(OPENBLAS_CMAKE_DIR)/$(OPENBLAS_CMAKE_CONFIG)
 ifndef NO_SHARED
 #ifeq logical or
-ifeq ($(OSNAME), $(filter $(OSNAME),Linux FreeBSD NetBSD))
+ifeq ($(OSNAME), $(filter $(OSNAME),Linux DragonFly FreeBSD NetBSD))
 	@echo "SET(OpenBLAS_LIBRARIES ${OPENBLAS_LIBRARY_DIR}/$(LIBPREFIX).so)" >> $(DESTDIR)$(OPENBLAS_CMAKE_DIR)/$(OPENBLAS_CMAKE_CONFIG)
 endif
 ifeq ($(OSNAME), $(filter $(OSNAME),WINNT CYGWIN_NT))
